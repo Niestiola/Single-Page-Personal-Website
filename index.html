@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6f5f0">
+    <title>Little by Little — Daily To-dos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container">
+        <section class="todo-app" aria-labelledby="pageTitle">
+            <header class="todo-header">
+                <div class="brand-mark" aria-hidden="true">✳</div>
+                <p class="eyebrow">YOUR DAILY SPACE</p>
+                <h1 id="pageTitle">Little by little.</h1>
+                <p class="subtitle">A little progress is still progress.</p>
+            </header>
+
+            <section class="progress-section" aria-label="List progress">
+                <div class="progress-copy">
+                    <span class="progress-label">Your progress</span>
+                    <span id="progressText" class="progress-count" aria-live="polite">0 of 0 done</span>
+                </div>
+                <progress id="progressBar" class="progress-bar" max="100" value="0" aria-label="Task completion"></progress>
+            </section>
+
+            <form id="todoForm" class="todo-input-container">
+                <label class="sr-only" for="todoInput">Add a task</label>
+                <input
+                    type="text"
+                    id="todoInput"
+                    class="todo-input"
+                    placeholder="What would you like to do?"
+                    autocomplete="off"
+                    maxlength="120"
+                    required
+                >
+                <label class="sr-only" for="priorityInput">Task priority</label>
+                <select id="priorityInput" class="priority-select">
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                    <option value="low">Low</option>
+                </select>
+                <button id="addTodoBtn" class="add-btn" type="submit">
+                    <span aria-hidden="true">+</span> Add task
+                </button>
+                <p id="formMessage" class="form-message" aria-live="polite"></p>
+            </form>
+
+            <p id="storageMessage" class="storage-message" role="status" hidden></p>
+
+            <div class="list-toolbar">
+                <h2 class="list-heading">Your list</h2>
+                <div class="filter-container" role="group" aria-label="Filter tasks">
+                    <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All</button>
+                    <button class="filter-btn" type="button" data-filter="active" aria-pressed="false">To do</button>
+                    <button class="filter-btn" type="button" data-filter="completed" aria-pressed="false">Done</button>
+                </div>
+            </div>
+
+            <ul id="todoList" class="todo-list" aria-live="polite"></ul>
+            <p id="emptyMessage" class="empty-message" hidden></p>
+
+            <footer class="todo-footer">
+                <span id="itemsLeft" class="items-left">0 tasks left</span>
+                <button id="clearCompletedBtn" class="clear-completed" type="button" disabled>Clear completed</button>
+            </footer>
+        </section>
+        <p class="page-note">One thing at a time. You've got this.</p>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
