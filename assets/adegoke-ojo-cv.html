@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Screen readers, browsers and search previews use this document metadata. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adegoke Oladipupo Ojo — CV</title>
+    <style>
+        /* Print-specific colors and spacing make the exported CV readable on paper. */
+        :root {
+            color-scheme: light;
+            --ink: #171922;
+            --muted: #606573;
+            --accent: #e9502a;
+            --line: #e4e6eb;
+            --soft: #f4f5f8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* A4 page margins fit the complete CV on a single printed page. */
+        @page {
+            size: A4;
+            margin: 12mm 15mm;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: "Segoe UI", Arial, sans-serif;
+            font-size: 8.3pt;
+            line-height: 1.36;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* The heading identifies the applicant and groups all direct contact details. */
+        header {
+            padding-bottom: 10pt;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        h1 {
+            margin: 0 0 2pt;
+            font-size: 25pt;
+            font-weight: 800;
+            letter-spacing: -1.2pt;
+            line-height: 1.05;
+        }
+
+        .role {
+            margin: 0 0 9pt;
+            color: var(--accent);
+            font-size: 11pt;
+            font-weight: 700;
+        }
+
+        .contact {
+            margin: 0;
+            color: var(--muted);
+            font-size: 8pt;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Consistent section headings make experience and skills easy to scan. */
+        section {
+            margin-top: 9pt;
+        }
+
+        h2 {
+            margin: 0 0 4pt;
+            padding-bottom: 2pt;
+            border-bottom: 1px solid var(--line);
+            color: var(--accent);
+            font-size: 8.5pt;
+            font-weight: 800;
+            letter-spacing: 1.05pt;
+            text-transform: uppercase;
+        }
+
+        p {
+            margin: 0 0 3pt;
+        }
+
+        .summary {
+            color: #343744;
+        }
+
+        .skill-line {
+            margin: 0 0 2pt;
+        }
+
+        .skill-line strong {
+            color: #30333e;
+        }
+
+        article {
+            margin: 0 0 8pt;
+        }
+
+        .entry-heading {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12pt;
+        }
+
+        h3 {
+            margin: 0;
+            font-size: 10pt;
+            font-weight: 750;
+        }
+
+        .date {
+            flex: 0 0 auto;
+            color: var(--accent);
+            font-size: 8pt;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            margin: 1pt 0 3pt;
+            color: var(--muted);
+            font-size: 8pt;
+        }
+
+        ul {
+            margin: 2pt 0 0;
+            padding-left: 14pt;
+        }
+
+        li {
+            padding-left: 1pt;
+            margin-bottom: 1pt;
+        }
+
+        .project {
+            margin-bottom: 6pt;
+        }
+
+        /* Screen preview and responsive rules do not change the print layout. */
+        .closing {
+            margin-top: 5pt;
+            padding: 6pt 8pt;
+            border-radius: 5pt;
+            background: var(--soft);
+        }
+
+        .closing p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media screen {
+            body {
+                max-width: 820px;
+                margin: 36px auto;
+                padding: 48px 56px;
+                background: white;
+                box-shadow: 0 12px 50px rgba(23, 25, 34, 0.1);
+            }
+        }
+
+        @media print {
+            a {
+                text-decoration: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- The header gives the applicant's name, role and contact details first. -->
+    <header>
+        <h1>Adegoke Oladipupo Ojo</h1>
+        <p class="role">Aspiring Full Stack Developer</p>
+        <p class="contact">
+            Ilesa, Osun State, Nigeria &nbsp;·&nbsp; Open to remote opportunities<br>
+            <a href="mailto:Adegokeoladipupo36@gmail.com">Adegokeoladipupo36@gmail.com</a>
+            &nbsp;·&nbsp; <a href="tel:+2349138057121">+234 913 805 7121</a><br>
+            <a href="https://my-portfolio-rose-theta-87.vercel.app">my-portfolio-rose-theta-87.vercel.app</a>
+            &nbsp;·&nbsp; <a href="https://github.com/Niestiola">github.com/Niestiola</a>
+        </p>
+    </header>
+
+    <!-- CV sections follow the same order as the supplied resume for easy scanning. -->
+    <main>
+        <!-- Summary condenses the candidate's experience and current learning goals. -->
+        <section>
+            <h2>Professional Summary</h2>
+            <p class="summary">Computer Science graduate with hands-on experience building responsive web applications using HTML, CSS, JavaScript and React. Experienced in developing frontend interfaces, integrating REST APIs, troubleshooting application issues and collaborating through Git and GitHub. Familiar with component-based development and responsive user interfaces. Currently expanding knowledge of Node.js, Express and MongoDB. Detail-oriented, adaptable and eager to contribute to a development team while growing into a well-rounded full-stack developer.</p>
+        </section>
+
+        <!-- Skill groups preserve the distinction between current and developing skills. -->
+        <section>
+            <h2>Technical Skills</h2>
+            <p class="skill-line"><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+), React.js, JSX, React Hooks, component-based development</p>
+            <p class="skill-line"><strong>Styling &amp; UX:</strong> Tailwind CSS, responsive web design, mobile-first development, cross-device layout testing, UI implementation</p>
+            <p class="skill-line"><strong>APIs &amp; debugging:</strong> REST API integration, frontend-to-backend communication, Browser Developer Tools, JavaScript debugging, layout troubleshooting</p>
+            <p class="skill-line"><strong>Tools:</strong> Git, GitHub, Visual Studio Code</p>
+            <p class="skill-line"><strong>Currently developing:</strong> Node.js, Express.js, MongoDB, backend development concepts, database management</p>
+        </section>
+
+        <!-- Project bullets describe the documented contributions and technologies. -->
+        <section>
+            <h2>Technical Projects</h2>
+            <article class="project">
+                <div class="entry-heading">
+                    <h3>PayLab — Mock Digital Wallet Application</h3>
+                    <span class="date">Team project</span>
+                </div>
+                <p class="subtitle">React · Tailwind CSS · REST APIs · Git and GitHub</p>
+                <ul>
+                    <li>Collaborated with a mentor and another student to develop the frontend of a peer-to-peer digital wallet application.</li>
+                    <li>Developed interfaces for registration, login, wallet dashboard, money transfers and transaction history.</li>
+                    <li>Integrated frontend screens with REST API endpoints for authentication, wallet balance and transfers.</li>
+                    <li>Collaborated using Git and GitHub and worked on responsive mobile and desktop layouts.</li>
+                </ul>
+            </article>
+            <article class="project">
+                <div class="entry-heading">
+                    <h3>To-Do List Application</h3>
+                    <span class="date">Personal project</span>
+                </div>
+                <p class="subtitle">HTML · CSS · JavaScript · React</p>
+                <ul>
+                    <li>Built a task management application to add, complete and delete tasks.</li>
+                    <li>Implemented browser localStorage to retain task data across page refreshes.</li>
+                    <li>Rebuilt the application with React, JSX, component-based development and the useState hook.</li>
+                    <li>Practised debugging and presented a walkthrough of the application and its implementation.</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- Education dates and institution locations are retained from the CV. -->
+        <section>
+            <h2>Education</h2>
+            <article>
+                <div class="entry-heading">
+                    <h3>Higher National Diploma (HND), Computer Science</h3>
+                    <span class="date">2018 – 2021</span>
+                </div>
+                <p class="subtitle">Federal Polytechnic Ede · Ede, Osun State</p>
+            </article>
+            <article>
+                <div class="entry-heading">
+                    <h3>Secondary School Education</h3>
+                    <span class="date">2014</span>
+                </div>
+                <p class="subtitle">Omoladun Comprehensive College · Ibadan, Oyo State</p>
+            </article>
+        </section>
+
+        <!-- Additional notes include verified NYSC status and work preferences. -->
+        <section>
+            <h2>Additional Information</h2>
+            <div class="closing">
+                <p><strong>National Youth Service Corps (NYSC):</strong> Successfully completed in 2026.</p>
+                <p>Strong willingness to learn; good communication and teamwork skills; able to work independently and collaboratively. Detail-oriented, with an interest in debugging and problem-solving. Open to remote internship opportunities.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

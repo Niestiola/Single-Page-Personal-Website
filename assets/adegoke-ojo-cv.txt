@@ -1,0 +1,106 @@
+ADEGOKE OLADIPUPO OJO
+
+Aspiring Full Stack Developer
+
+Ilesa, Osun State, Nigeria | Open to Remote Opportunities
+Email: Adegokeoladipupo36@gmail.com
+Phone: +234 913 805 7121
+Portfolio: https://my-portfolio-rose-theta-87.vercel.app
+GitHub: https://github.com/Niestiola
+
+---
+
+PROFESSIONAL SUMMARY
+
+Computer Science graduate with practical experience building responsive and interactive web applications using HTML, CSS, JavaScript and React. Experienced in developing frontend interfaces, integrating REST APIs, troubleshooting application issues, and collaborating on shared codebases using Git and GitHub.
+
+Through personal and collaborative projects, I have developed an understanding of frontend application architecture, component-based development, API communication, and responsive user interfaces.
+
+Currently expanding my knowledge of backend development, Node.js, Express, and MongoDB, with a strong interest in building, maintaining, and improving real-world digital products.
+
+Detail-oriented, adaptable, eager to learn, and motivated to contribute to a development team while growing into a well-rounded full-stack developer.
+
+TECHNICAL SKILLS
+
+Frontend Development
+
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- React.js
+- JSX
+- React Hooks
+- Component-based development
+
+Styling and User Experience
+
+- Tailwind CSS
+- Responsive web design
+- Mobile-first development
+- Cross-device layout testing
+- UI implementation
+
+API Integration and Debugging
+
+- REST API integration
+- Frontend-to-backend communication
+- Browser Developer Tools
+- JavaScript debugging
+- Layout troubleshooting
+
+Development Tools
+
+- Git
+- GitHub
+- Visual Studio Code
+
+Currently Developing Skills
+
+- Node.js
+- Express.js
+- MongoDB
+- Backend development concepts
+- Database management
+
+TECHNICAL PROJECTS
+
+PayLab – Mock Digital Wallet Application
+
+Team Project | React, Tailwind CSS, REST APIs, Git and GitHub
+
+- Collaborated with a mentor and another student to develop the frontend of a peer-to-peer digital wallet application.
+- Developed user interfaces for user registration, login, wallet dashboard, money transfers, and transaction history.
+- Integrated frontend screens with REST API endpoints for authentication, wallet balance, and transfer functionalities.
+- Collaborated with team members using Git and GitHub to manage and share code.
+- Worked on responsive layouts to support mobile and desktop users.
+
+To-Do List Application
+
+Personal Project | HTML, CSS, JavaScript, React
+
+- Developed a task management application that allows users to add, complete, and delete tasks.
+- Implemented browser localStorage to maintain task data across page refreshes.
+- Rebuilt the application using React, applying component-based development, JSX, and the useState hook.
+- Practised debugging application behaviour and resolving frontend issues.
+- Presented a walkthrough explaining the application's functionality and implementation.
+
+EDUCATION
+
+Federal Polytechnic Ede, Ede, Osun State
+
+Higher National Diploma (HND), Computer Science
+2018 – 2021
+
+Omoladun Comprehensive College, Ibadan, Oyo State
+
+Secondary School Education
+2014
+
+ADDITIONAL INFORMATION
+
+- National Youth Service Corps (NYSC): Successfully completed in 2026.
+- Strong willingness to learn new technologies and development frameworks.
+- Good communication and teamwork skills.
+- Ability to work independently and collaboratively.
+- Detail-oriented with an interest in debugging and problem-solving.
+- Open to remote internship opportunities.

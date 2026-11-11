@@ -1,75 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Document metadata sets the page title, responsive viewport and search preview. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f6f5f0">
-    <title>Little by Little — Daily To-dos</title>
+    <meta name="theme-color" content="#f1f3f8">
+    <meta name="description"
+        content="The portfolio of Adegoke Oladipupo Ojo, an aspiring full stack developer building responsive web experiences with React and JavaScript.">
+    <title>Adegoke Ojo — Aspiring Full Stack Developer</title>
+    <!-- Apply a saved theme before styles render to prevent a flash of the wrong colors. -->
+    <script>
+        try {
+            const savedTheme = localStorage.getItem('adegoke-portfolio-theme');
+            if (savedTheme === 'light' || savedTheme === 'dark') {
+                document.documentElement.dataset.theme = savedTheme;
+            }
+        } catch (error) {
+            console.error('Unable to read the saved color theme.', error);
+        }
+    </script>
     <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
 </head>
+
 <body>
-    <main class="container">
-        <section class="todo-app" aria-labelledby="pageTitle">
-            <header class="todo-header">
-                <div class="brand-mark" aria-hidden="true">✳</div>
-                <p class="eyebrow">YOUR DAILY SPACE</p>
-                <h1 id="pageTitle">Little by little.</h1>
-                <p class="subtitle">A little progress is still progress.</p>
-            </header>
+    <!-- Keyboard users can skip repeated navigation and jump directly to page content. -->
+    <a class="skip-link" href="#main">Skip to content</a>
 
-            <section class="progress-section" aria-label="List progress">
-                <div class="progress-copy">
-                    <span class="progress-label">Your progress</span>
-                    <span id="progressText" class="progress-count" aria-live="polite">0 of 0 done</span>
+    <!-- Sticky header links each portfolio section and exposes a mobile menu button. -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="#home" aria-label="Adegoke Ojo, home">AO</a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="menu-toggle__line"></span>
+                <span class="menu-toggle__line"></span>
+            </button>
+            <!-- Theme button switches the site palette independently of mobile navigation. -->
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme"
+                aria-pressed="false" title="Switch to dark theme">
+                <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M20.2 15.1A8.4 8.4 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z"></path>
+                </svg>
+                <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path
+                        d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42">
+                    </path>
+                </svg>
+            </button>
+            <nav class="primary-nav" id="primaryNav" aria-label="Main navigation">
+                <a class="nav-link" href="#home">Home</a>
+                <a class="nav-link" href="#about">About</a>
+                <a class="nav-link" href="#skills">Skills</a>
+                <a class="nav-link" href="#experience">Experience</a>
+                <a class="nav-link" href="#projects">Projects</a>
+                <a class="nav-link" href="#gallery">Gallery</a>
+                <a class="nav-contact" href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main content is organized as labeled, anchor-linkable portfolio sections. -->
+    <main id="main">
+        <!-- Hero introduces the developer and provides project and CV download links. -->
+        <section class="hero section-shell" id="home" aria-labelledby="heroTitle">
+            <div class="hero-copy">
+                <p class="eyebrow"><span class="eyebrow-dot"></span> Aspiring full stack developer</p>
+                <h1 id="heroTitle">Adegoke<br>Oladipupo <span>Ojo.</span></h1>
+                <p class="hero-intro">I build responsive, thoughtful web experiences and keep growing into the full
+                    stack — one useful project at a time.</p>
+                <div class="hero-actions">
+                    <a class="button button--accent" href="#projects">View projects <span
+                            aria-hidden="true">↗</span></a>
+                    <a class="button button--outline" href="assets/adegoke-ojo-cv.pdf"
+                        download="Adegoke-Oladipupo-Ojo-CV.pdf">Download CV <span aria-hidden="true">↓</span></a>
                 </div>
-                <progress id="progressBar" class="progress-bar" max="100" value="0" aria-label="Task completion"></progress>
-            </section>
-
-            <form id="todoForm" class="todo-input-container">
-                <label class="sr-only" for="todoInput">Add a task</label>
-                <input
-                    type="text"
-                    id="todoInput"
-                    class="todo-input"
-                    placeholder="What would you like to do?"
-                    autocomplete="off"
-                    maxlength="120"
-                    required
-                >
-                <label class="sr-only" for="priorityInput">Task priority</label>
-                <select id="priorityInput" class="priority-select">
-                    <option value="medium" selected>Medium</option>
-                    <option value="high">High</option>
-                    <option value="low">Low</option>
-                </select>
-                <button id="addTodoBtn" class="add-btn" type="submit">
-                    <span aria-hidden="true">+</span> Add task
-                </button>
-                <p id="formMessage" class="form-message" aria-live="polite"></p>
-            </form>
-
-            <p id="storageMessage" class="storage-message" role="status" hidden></p>
-
-            <div class="list-toolbar">
-                <h2 class="list-heading">Your list</h2>
-                <div class="filter-container" role="group" aria-label="Filter tasks">
-                    <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All</button>
-                    <button class="filter-btn" type="button" data-filter="active" aria-pressed="false">To do</button>
-                    <button class="filter-btn" type="button" data-filter="completed" aria-pressed="false">Done</button>
+                <div class="hero-note">
+                    <span class="availability-dot" aria-hidden="true"></span>
+                    <span>Based in Ilesa, Nigeria <span class="note-divider">·</span> Open to remote
+                        opportunities</span>
                 </div>
             </div>
+            <div class="hero-visual">
+                <div class="hero-photo-frame">
+                    <img src="assets/adegoke-formal.jpeg" alt="Adegoke Ojo in a white shirt" width="504" height="1008"
+                        fetchpriority="high">
+                    <span class="photo-index" aria-hidden="true">01 / 06</span>
+                </div>
+                <div class="hero-sticker">
+                    <span class="sticker-spark" aria-hidden="true">✳</span>
+                    <span>Curious by nature.<br><strong>Always building.</strong></span>
+                </div>
+                <span class="visual-caption">A little about me <span aria-hidden="true">↘</span></span>
+            </div>
+        </section>
 
-            <ul id="todoList" class="todo-list" aria-live="polite"></ul>
-            <p id="emptyMessage" class="empty-message" hidden></p>
+        <!-- About pairs a professional introduction with concise location and career facts. -->
+        <section class="about section-shell section-space" id="about" aria-labelledby="aboutTitle">
+            <div class="section-heading">
+                <p class="eyebrow">01 / About me</p>
+                <h2 id="aboutTitle">A bit about me<span class="accent-period">.</span></h2>
+            </div>
+            <div class="about-layout">
+                <div class="about-copy">
+                    <p class="lead">I’m a Computer Science graduate who enjoys turning ideas into clear, responsive
+                        interfaces.</p>
+                    <p>My hands-on work spans HTML, CSS, JavaScript and React — from building component-based screens to
+                        integrating REST APIs and debugging across devices. I’ve worked on personal and collaborative
+                        projects, and I’m currently developing my backend skills with Node.js, Express and MongoDB.</p>
+                    <p>I’m detail-oriented, eager to learn and open to remote opportunities where I can contribute,
+                        collaborate and keep improving.</p>
+                </div>
+                <div class="fact-grid" aria-label="Quick facts">
+                    <article class="fact-card">
+                        <span class="fact-label">Based in</span>
+                        <strong>Ilesa, Osun State</strong>
+                    </article>
+                    <article class="fact-card">
+                        <span class="fact-label">I work with</span>
+                        <strong>React, JavaScript &amp; REST APIs</strong>
+                    </article>
+                    <article class="fact-card">
+                        <span class="fact-label">Currently learning</span>
+                        <strong>Node.js, Express &amp; MongoDB</strong>
+                    </article>
+                    <article class="fact-card">
+                        <span class="fact-label">Open to</span>
+                        <strong>Remote roles &amp; internships</strong>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-            <footer class="todo-footer">
-                <span id="itemsLeft" class="items-left">0 tasks left</span>
-                <button id="clearCompletedBtn" class="clear-completed" type="button" disabled>Clear completed</button>
+        <!-- Skills group current strengths separately from technologies being learned. -->
+        <section class="skills section-shell section-space" id="skills" aria-labelledby="skillsTitle">
+            <div class="section-heading section-heading--row">
+                <div>
+                    <p class="eyebrow">02 / Tools &amp; technology</p>
+                    <h2 id="skillsTitle">My toolkit<span class="accent-period">.</span></h2>
+                </div>
+                <p class="section-aside">Tools I use today, and the skills I’m growing next.</p>
+            </div>
+            <div class="skill-groups">
+                <article class="skill-group">
+                    <span class="skill-number">01</span>
+                    <div>
+                        <h3>Frontend</h3>
+                        <ul class="skill-list">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript ES6+</li>
+                            <li>React.js</li>
+                            <li>JSX</li>
+                            <li>React Hooks</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="skill-group">
+                    <span class="skill-number">02</span>
+                    <div>
+                        <h3>UI &amp; integration</h3>
+                        <ul class="skill-list">
+                            <li>Tailwind CSS</li>
+                            <li>Responsive design</li>
+                            <li>REST APIs</li>
+                            <li>Component-based development</li>
+                            <li>Browser DevTools</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="skill-group">
+                    <span class="skill-number">03</span>
+                    <div>
+                        <h3>Workflow &amp; learning</h3>
+                        <ul class="skill-list">
+                            <li>Git</li>
+                            <li>GitHub</li>
+                            <li>VS Code</li>
+                            <li class="skill-list__learning">Node.js</li>
+                            <li class="skill-list__learning">Express.js</li>
+                            <li class="skill-list__learning">MongoDB</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+            <p class="skills-note"><span aria-hidden="true">＋</span> Backend development and database management are
+                active learning areas.</p>
+        </section>
+
+        <!-- Experience and education present CV milestones without inventing employment. -->
+        <section class="experience section-shell section-space" id="experience" aria-labelledby="experienceTitle">
+            <div class="section-heading">
+                <p class="eyebrow">03 / Background</p>
+                <h2 id="experienceTitle">Experience &amp; education<span class="accent-period">.</span></h2>
+            </div>
+            <div class="timeline-grid">
+                <div class="timeline-column">
+                    <h3 class="timeline-heading"><span class="timeline-heading__mark" aria-hidden="true">↗</span>
+                        Practical experience</h3>
+                    <article class="timeline-card">
+                        <span class="timeline-date">Team project</span>
+                        <h4>Frontend contributor — PayLab</h4>
+                        <p>Collaborated with a mentor and another student on a peer-to-peer digital wallet application.
+                        </p>
+                        <ul class="detail-list">
+                            <li>Built React interfaces for registration, login, wallet overview, transfers and
+                                transaction history.</li>
+                            <li>Connected screens to REST API endpoints and contributed through Git and GitHub.</li>
+                            <li>Worked on responsive layouts for mobile and desktop users.</li>
+                        </ul>
+                    </article>
+                    <article class="milestone-card">
+                        <span class="milestone-icon" aria-hidden="true">✳</span>
+                        <div>
+                            <span class="timeline-date">2026</span>
+                            <h4>National Youth Service Corps</h4>
+                            <p>Successfully completed NYSC.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="timeline-column">
+                    <h3 class="timeline-heading"><span class="timeline-heading__mark" aria-hidden="true">↗</span>
+                        Education</h3>
+                    <article class="education-card">
+                        <span class="timeline-date">2018 — 2021</span>
+                        <h4>Higher National Diploma, Computer Science</h4>
+                        <p>Federal Polytechnic Ede <span class="education-location">· Ede, Osun State</span></p>
+                    </article>
+                    <article class="education-card">
+                        <span class="timeline-date">2014</span>
+                        <h4>Secondary School Education</h4>
+                        <p>Omoladun Comprehensive College <span class="education-location">· Ibadan, Oyo State</span>
+                        </p>
+                    </article>
+                    <div class="learning-note">
+                        <span class="learning-note__icon" aria-hidden="true">↗</span>
+                        <p><strong>What’s next?</strong> Growing my backend knowledge with Node.js, Express and MongoDB.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project cards summarize two documented projects with CSS-drawn illustrations. -->
+        <section class="projects section-shell section-space" id="projects" aria-labelledby="projectsTitle">
+            <div class="section-heading section-heading--row">
+                <div>
+                    <p class="eyebrow">04 / Selected work</p>
+                    <h2 id="projectsTitle">Things I’ve built<span class="accent-period">.</span></h2>
+                </div>
+                <p class="section-aside">A mix of collaborative work and hands-on practice.</p>
+            </div>
+            <div class="project-grid">
+                <article class="project-card">
+                    <div class="project-art project-art--wallet" aria-hidden="true">
+                        <span class="project-art__label">PAYLAB / 01</span>
+                        <div class="wallet-visual">
+                            <div class="wallet-visual__top"><span>Wallet balance</span><span
+                                    class="wallet-visual__dots">•••</span></div>
+                            <strong>₦ ••••••</strong>
+                            <div class="wallet-visual__actions">
+                                <span>↗<small>Send</small></span><span>＋<small>Add</small></span><span>↻<small>History</small></span>
+                            </div>
+                        </div>
+                        <span class="project-art__spark">✳</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta"><span>Team project</span><span>React · Tailwind · REST APIs</span>
+                        </div>
+                        <h3>PayLab — Digital wallet</h3>
+                        <p>A peer-to-peer wallet frontend developed with a mentor and another student. I worked on the
+                            user flows and responsive screens for core wallet features.</p>
+                        <ul class="project-points">
+                            <li>Registration, login and wallet dashboard interfaces</li>
+                            <li>Money transfers and transaction history screens</li>
+                            <li>API integration and GitHub collaboration</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-art project-art--tasks" aria-hidden="true">
+                        <span class="project-art__label">TO-DO / 02</span>
+                        <div class="tasks-visual">
+                            <div class="tasks-visual__header"><span>My tasks</span><span>•••</span></div>
+                            <div class="tasks-visual__row"><span class="task-check task-check--done">✓</span><span
+                                    class="task-line task-line--done"></span><span class="task-tag">DONE</span></div>
+                            <div class="tasks-visual__row"><span class="task-check"></span><span
+                                    class="task-line"></span><span class="task-tag task-tag--active">NEXT</span></div>
+                            <div class="tasks-visual__row"><span class="task-check"></span><span
+                                    class="task-line task-line--short"></span><span class="task-tag"></span></div>
+                            <div class="tasks-visual__add"><span>＋</span> Add a task</div>
+                        </div>
+                        <span class="project-art__spark">✳</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta"><span>Personal project</span><span>HTML · CSS · JavaScript ·
+                                React</span></div>
+                        <h3>To-Do List Application</h3>
+                        <p>A task manager built in vanilla JavaScript and rebuilt with React to practise component-based
+                            development and state.</p>
+                        <ul class="project-points">
+                            <li>Add, complete and delete tasks</li>
+                            <li>Local storage keeps tasks across page refreshes</li>
+                            <li>React version uses JSX and the useState hook</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Personal gallery uses captions, descriptive alt text and lazy-loaded photos. -->
+        <section class="gallery section-shell section-space" id="gallery" aria-labelledby="galleryTitle">
+            <div class="section-heading section-heading--row">
+                <div>
+                    <p class="eyebrow">05 / A few moments</p>
+                    <h2 id="galleryTitle">Outside the code<span class="accent-period">.</span></h2>
+                </div>
+                <p class="section-aside">A small collection of personal photos.</p>
+            </div>
+            <div class="gallery-grid">
+                <figure class="gallery-item gallery-item--tall">
+                    <img src="assets/adegoke-profile.jpeg" alt="Adegoke in a white T-shirt" width="480" height="1040"
+                        loading="lazy" decoding="async">
+                    <figcaption>Just me, between builds.</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="assets/adegoke-work.jpeg" alt="Adegoke in a light shirt" width="480" height="1040"
+                        loading="lazy" decoding="async">
+                    <figcaption>A day in the details.</figcaption>
+                </figure>
+                <figure class="gallery-item gallery-item--wide">
+                    <img src="assets/adegoke-community.jpeg" alt="Adegoke at a community gathering" width="744"
+                        height="1024" loading="lazy" decoding="async">
+                    <figcaption>Good people, shared moments.</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="assets/adegoke-casual.jpeg" alt="Adegoke in a grey T-shirt" width="480" height="1040"
+                        loading="lazy" decoding="async">
+                    <figcaption>A quieter moment.</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="assets/adegoke-portrait.jpeg" alt="Adegoke seated for a portrait" width="480"
+                        height="1040" loading="lazy" decoding="async">
+                    <figcaption>One for the album.</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="assets/adegoke-formal.jpeg" alt="Adegoke in a white collared shirt" width="504"
+                        height="1008" loading="lazy" decoding="async">
+                    <figcaption>Showing up, ready to learn.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Contact provides direct email, phone, GitHub and a second CV download link. -->
+        <section class="contact" id="contact" aria-labelledby="contactTitle">
+            <div class="contact-inner section-shell">
+                <div class="contact-copy">
+                    <p class="eyebrow">06 / Contact</p>
+                    <h2 id="contactTitle">Let’s build<br>something good<span class="accent-period">.</span></h2>
+                    <p>I’m open to remote opportunities, internships and conversations about thoughtful web experiences.
+                        I’d be glad to hear from you.</p>
+                    <a class="contact-email" href="mailto:Adegokeoladipupo36@gmail.com">
+                        <span aria-hidden="true">✉</span> Adegokeoladipupo36@gmail.com
+                    </a>
+                </div>
+                <div class="contact-card">
+                    <p class="contact-card__eyebrow">Get in touch</p>
+                    <a class="contact-link" href="mailto:Adegokeoladipupo36@gmail.com"><span>Email</span><strong>Send me
+                            a note <span aria-hidden="true">↗</span></strong></a>
+                    <a class="contact-link" href="tel:+2349138057121"><span>Phone</span><strong>+234 913 805 7121 <span
+                                aria-hidden="true">↗</span></strong></a>
+                    <a class="contact-link" href="https://github.com/Niestiola" target="_blank"
+                        rel="noopener noreferrer"><span>GitHub</span><strong>github.com/Niestiola <span
+                                aria-hidden="true">↗</span></strong></a>
+                    <div class="contact-location"><span>Location</span><strong>Ilesa, Osun State, Nigeria</strong></div>
+                    <a class="button button--accent contact-cv" href="assets/adegoke-ojo-cv.pdf"
+                        download="Adegoke-Oladipupo-Ojo-CV.pdf">Download my CV <span aria-hidden="true">↓</span></a>
+                </div>
+            </div>
+            <!-- Footer repeats the brand, computes the current year, and links back to the top. -->
+            <footer class="site-footer section-shell">
+                <a class="brand brand--footer" href="#home" aria-label="Back to top">AO</a>
+                <p>© <span id="currentYear">2026</span> Adegoke Ojo. Made with care.</p>
+                <a href="#home" class="back-to-top">Back to top <span aria-hidden="true">↑</span></a>
             </footer>
         </section>
-        <p class="page-note">One thing at a time. You've got this.</p>
     </main>
-
-    <script src="app.js"></script>
 </body>
+
 </html>
